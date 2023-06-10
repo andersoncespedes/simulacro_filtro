@@ -39,6 +39,51 @@
     </style>
 </head>
 <body>
+  <div class="modal fade" id="RutasGuardar" aria-hidden="true" aria-labelledby="RutasGuardar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Ingresar</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="formRutas">
+            <div class="mb-3 row">
+              <label for="staticEmail" class="col-sm-2 col-form-label">Nombre del ticket</label>
+              <div class="col-sm-10">
+              <input type="text" name="nombre_ticket" value="ajdakjsdhkj" class="form-control" required>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Valor</label>
+              <div class="col-sm-10">
+                <input type="number" name="valor" class="form-control" id="inputPassword" required>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">ciudad de origen</label>
+              <div class="col-sm-10">
+                <input type="text" name="ciudad_origen" class="form-control" id="inputPassword" required>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">ciudad de destino</label>
+              <div class="col-sm-10">
+                <input type="text" name="ciudad_destino" class="form-control" id="inputPassword" required>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">puntos</label>
+              <div class="col-sm-10">
+                <input type="number" name="puntos" class="form-control" id="inputPassword" required>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary mb-3" name="guardar">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -287,7 +332,7 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="ModalEditar" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal fade" id="ModalEditar" aria-hidden="true" aria-labelledby="ModalEditar" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -297,6 +342,7 @@
         <div class="modal-body">
           <form action="" id="editCliente">
             <div class="mb-3 row">
+              <input type="text" name = "detect" style="display: none;">
               <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
               <div class="col-sm-10">
               <input type="text" name="nombre" class="form-control"required>
@@ -541,7 +587,7 @@
         <li> <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button></li>
         <li> <button class="nav-link" id="nav-cliente-tab" data-bs-toggle="tab" data-bs-target="#nav-cliente" type="button" role="tab" aria-controls="nav-cliente" aria-selected="false">Cliente</button></li>
         <li> <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Rutas</button></li>
-        <li> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button></li>
+        <li> <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ticket</button></li>
       </ul>
     </nav>
   </header>
@@ -756,21 +802,66 @@
             <th>Opciones</th>
           </tr>
         </thead>
-          
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td> 
-            <td><button class="btn btn-warning">Eliminar</button></td>
-          </tr>
+          <tbody id="rutas">
+
+          </tbody>
         </table>
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Ingresar</button>
+        <button class="btn btn-primary" data-bs-target="#RutasGuardar" data-bs-toggle="modal">Ingresar</button>
     </div>
     </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <div class="container" style="text-align: center;">
+        <form action="" id="ticket">
+          <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Cliente</label>
+            <div class="col-sm-10">
+            <select name="cliente" id="cliente" class="form-control">
+
+            </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Ruta</label>
+            <div class="col-sm-10">
+              <select name="rutas" id="rutas" class="form-control">
+              
+            </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Precio</label>
+            <div class="col-sm-10">
+              <input type="text" name="precio" class="form-control" id="inputPassword" required disabled>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Iva</label>
+            <div class="col-sm-10">
+              <input type="text" name="iva" class="form-control" id="inputPassword" required disabled>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Tasa del aeropuerto</label>
+            <div class="col-sm-10">
+              <input type="text" name="aeropuerto" class="form-control" id="inputPassword" required disabled>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Total a pagar</label>
+            <div class="col-sm-10">
+              <input type="text" name="total" class="form-control" id="inputPassword" required disabled>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">puntos</label>
+            <div class="col-sm-10">
+              <input type="number" name="puntos" class="form-control" id="inputPassword" required disabled>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary mb-3" name="guardar">Guardar</button>
+        </form>
+      </div>
+    </div>
     <!-- Footer -->
     
   
@@ -833,7 +924,6 @@
       </ul>
     </div>
   </footer>
-
         <script
   src="https://code.jquery.com/jquery-3.7.0.js"
   integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
@@ -842,6 +932,8 @@
   <script src="config.js"></script>
   <script src="controller/clienteController.js"></script>
   <script src="controller/rutasController.js"></script>
+  <script src="controller/ticketsController.js"></script>
+
   <script>
   </script>
 </body>
